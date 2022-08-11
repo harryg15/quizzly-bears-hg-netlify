@@ -1,5 +1,5 @@
  [build]
-    command = "CI= npm run build" # how to trigger a build
+    command = "CI= npm run build --legacy-peer-deps" # how to trigger a build
     publish = "./build" # what folder to publish
 [[redirects]]
     from = "/*" # redirect any path

@@ -8,7 +8,8 @@ function sendToHome() {
   }
     return (
         <section className="d-flex flex-column justify-content-center">
- { window.location.href != "https://quizzlybears.netlify.app/" &&
+ {/* { window.location.href != ("https://quizzlybears.netlify.app/" &&  "https://quizzlybears.netlify.app/results") && */}
+  { (window.location.href != "http://localhost:8080/" && window.location.href !=  "http://localhost:8080/results") &&
         <motion.button onClick={sendToHome} className="btn mx-auto mt-3 my-auto border border-light text-light leaderboard-home"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 0.8 }}
@@ -26,6 +27,27 @@ function sendToHome() {
               restDelta: 0.001
             }
           }}>Home</motion.button>
+        }
+        { (window.location.href ==  "http://localhost:8080/results") &&
+        <a className="mx-auto" href="http://localhost:8080/">
+        <motion.button className="btn mx-auto mt-3 my-auto border border-light text-light leaderboard-home"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 0.8 }}
+          exit={{ opacity: 0, scale: 0.5}}
+          whileHover={{ scale: 0.85 }}
+          transition={{
+            default: {
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01],
+            },
+            scale: {
+              type: "spring",
+              damping: 10,
+              stiffness: 400,
+              restDelta: 0.001
+            }
+          }}>Home</motion.button>
+          </a>
         }
         <section className="container">
             <header className="text-center pb-5 pt-1 mx-5">

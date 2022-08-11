@@ -64,7 +64,7 @@ const Game = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit">
-                <h5><b>{quizState.category} - {questionNumber}/10</b></h5>
+                <h5><b>{questionNumber<=10 && <>{quizState.category} - {questionNumber}/10</>}</b></h5>
             </motion.div>
             <div>
                 <Row>

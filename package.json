@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
-    "build": "webpack --config config/webpack.config.production.js",
+    "build": "webpack --config config/webpack.config.production.js"
   },
   "keywords": ["reactjs", "redux", "framer motion", "bootstrap", "socket.io", "nodejs", "expressjs", "pgSQL"],
   "author": "QuizzlyBears",

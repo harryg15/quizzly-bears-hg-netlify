@@ -38,7 +38,7 @@ const Game = () => {
   const quizState = useSelector((state) => state.quizState);
   const player = useSelector((state) => state.player);
   const socket = useSelector((state) => state.socket);
-
+console.log(allUsers);
   const players = allUsers.map((player) => (
     <div
       className="card m-2 text-center"

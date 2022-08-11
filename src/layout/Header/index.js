@@ -8,8 +8,7 @@ function sendToHome() {
   }
     return (
         <section className="d-flex flex-column justify-content-center">
- {/* { window.location.href != ("https://quizzlybears.netlify.app/" &&  "https://quizzlybears.netlify.app/results") && */}
-  { (window.location.href != "http://localhost:8080/" && window.location.href !=  "http://localhost:8080/results") &&
+  { (window.location.href != "https://quizzlybears.netlify.app/" && window.location.href !=  "https://quizzlybears.netlify.app/results") &&
         <motion.button onClick={sendToHome} className="btn mx-auto mt-3 my-auto border border-light text-light leaderboard-home"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 0.8 }}
@@ -28,8 +27,8 @@ function sendToHome() {
             }
           }}>Home</motion.button>
         }
-        { (window.location.href ==  "http://localhost:8080/results") &&
-        <a className="mx-auto" href="http://localhost:8080/">
+        { (window.location.href ==  "https://quizzlybears.netlify.app/results") &&
+        <a className="mx-auto" href="https://quizzlybears.netlify.app/">
         <motion.button className="btn mx-auto mt-3 my-auto border border-light text-light leaderboard-home"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 0.8 }}

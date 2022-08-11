@@ -54,7 +54,9 @@ export default function CreateGame() {
         return data.results;
     }
 
-    const handleUsername = (e) => setUsername(e.target.value);
+    const handleUsername = (e) => {
+        e.target.value.length > 8 ? alert('Max length 8 Characters.') : setUsername(e.target.value);
+    }
     const handleCategory = (e) => setCategory(e.target.value);
     const handleDifficulty = (e) => setDifficulty(e.target.value);
     const handleFormSubmit = async (e) => {

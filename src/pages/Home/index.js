@@ -59,14 +59,16 @@ const Home = () => {
     };
 
     const handleUserName = (e) => {
+        if (e.target.value.length > 8) {
+            alert('Max length 8 Characters.')
+    } else {
         setUsername(e.target.value);
+    }
     };
 
     const handleLobbyCode = (e) => {
         setLobbyCode(e.target.value);
     };
-
-
 
     function sendToLeaderboard() {
         navigate('/highscores');

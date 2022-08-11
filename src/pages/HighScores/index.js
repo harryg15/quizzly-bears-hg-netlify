@@ -6,16 +6,10 @@ import axios from "axios";
 
 const HighScores = () => {
   const [scores, setScores] = useState([]);
-  const navigate = useNavigate();
   useEffect(async () => {
     const scoreData = await axios.get("https://quizzlybears.herokuapp.com/highscores");
     setScores(scoreData.data);
   }, []);
-
-  function sendToHome() {
-    navigate('/');
-  }
-
   const renderHighScores = scores.map((rank, index) => {
     return (
       <motion.div key={index}
@@ -87,23 +81,6 @@ const HighScores = () => {
           }
         }}
       >
-        <motion.button onClick={sendToHome} className="btn mx-auto text-light leaderboard-home"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 0.8 }}
-          exit={{ opacity: 0, scale: 0.5}}
-          whileHover={{ scale: 0.85 }}
-          transition={{
-            default: {
-              duration: 0.3,
-              ease: [0, 0.71, 0.2, 1.01],
-            },
-            scale: {
-              type: "spring",
-              damping: 10,
-              stiffness: 400,
-              restDelta: 0.001
-            }
-          }}>Home</motion.button>
         {renderHighScores}
       </motion.div >
     </main >

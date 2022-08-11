@@ -36,8 +36,6 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const socket = useSelector((state) => state.socket);
-  const state = useSelector((state) => state);
-  console.log(state)
   const handleCreateGameModal = () => setCreateGame(true);
   const handleCloseGameModal = () => setCreateGame(false);
   const handleFormSubmit = (e) => {

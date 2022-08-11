@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { startQuiz } from "../../actions";
 import { Chat } from "../../components";
 import { motion } from 'framer-motion'
@@ -14,6 +14,8 @@ const Lobby = () => {
     const data = useSelector((state) => state.quizState);
     const user = useSelector((state) => state.player);
     const socket = useSelector((state) => state.socket);
+    const state = useSelector((state) => state);
+    console.log(state)
     const dispatch = useDispatch();
     const colors = ["lightred", "lightgreen", "lightblue", "orange", "yellow", "pink"];
     function handleClick() {
@@ -35,6 +37,14 @@ const Lobby = () => {
     }
     return (
         <section className='container'>
+            {!data.room &&
+            <>
+                        <h1 className="display-1 text-center text-warning">404</h1>
+            <h1 className="display-3 text-center text-danger">Lobby not found</h1>
+            <h1 className="display-5 text-center">This lobby does not exist. Please return to the homepage and either create a lobby or join an existing one with the Quiz ID.</h1>
+            </>
+            }
+
             {data.users && (
                 <div className='row justify-content-md-center'>
                     <motion.div className="col-10 mx-auto py-2 text-center"

@@ -18,19 +18,16 @@ function Chat({ socket, username, room }) {
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
   };
-
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
-
   return (
     <div className="chat-window card shadow">
       <div className="chat border-bottom border-primary text-light">
@@ -60,7 +57,6 @@ function Chat({ socket, username, room }) {
         </ScrollToBottom>
       </div>
       <div className="d-flex">
-
         <input
           type="text"
           value={currentMessage}

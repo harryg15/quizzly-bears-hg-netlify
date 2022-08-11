@@ -4,7 +4,6 @@ import { storeUser } from "../../actions";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { motion } from 'framer-motion';
-
 const categoryMap = {
     "General Knowledge": 9,
     "Entertainment: Books": 10,
@@ -27,16 +26,13 @@ const categoryMap = {
 };
 
 export default function CreateGame() {
-
     const [username, setUsername] = useState("");
     const [category, setCategory] = useState("General Knowledge");
     const [difficulty, setDifficulty] = useState("easy");
     const [lobbyCode, setLobbyCode] = useState("");
     const [checkForm, setCheckForm] = useState(false);
-
     const dispatch = useDispatch();
     const socket = useSelector((state) => state.socket);
-
     function lobbyCodeGenerator() {
         let result = "";
         let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -46,14 +42,11 @@ export default function CreateGame() {
         }
         return result;
     }
-
     async function getQuestions(cat, diff) {
         const url = `https://opentdb.com/api.php?amount=10&category=${categoryMap[cat]}&difficulty=${diff}&type=multiple`;
-        console.log(url)
         const { data } = await axios.get(url);
         return data.results;
     }
-
     const handleUsername = (e) => {
         e.target.value.length > 8 ? alert('Max length 8 Characters.') : setUsername(e.target.value);
     }
@@ -78,9 +71,7 @@ export default function CreateGame() {
         setCheckForm(true);
     };
     const dropdownItems = Object.keys(categoryMap).map(item => <option key={item} value={item}>{item}</option>)
-
     return (
-
         <section className='col-12 py-5'>
             <div className='container bg-light card text-center py-3 col-lg-4 col-md-6 col-sm-8 col-12 w-auto'>
                 <form onSubmit={handleFormSubmit} className="card pb-2">
@@ -104,7 +95,6 @@ export default function CreateGame() {
                             <option value="hard">Hard</option >
                         </select >
                     </div>
-
                     <div className='create-input'>
                         <motion.button className="btn btn-primary my-2"
                             type="submit"

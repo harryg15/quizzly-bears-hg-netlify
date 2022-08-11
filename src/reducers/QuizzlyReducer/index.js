@@ -38,7 +38,6 @@ const quizzlyReducer = (state = initState, action) => {
       ...state,
       quizState: { ...state.quizState, users: finishedUsersArr }
     }
-
     case 'INCREASE_QUESTION_NUMBER':
       let newQuestionNumber = state.quizState.questionNumber + 1;
       return {

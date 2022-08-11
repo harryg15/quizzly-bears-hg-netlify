@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { startQuiz } from "../../actions";
@@ -15,9 +15,7 @@ const Lobby = () => {
     const user = useSelector((state) => state.player);
     const socket = useSelector((state) => state.socket);
     const dispatch = useDispatch();
-
     const colors = ["lightred", "lightgreen", "lightblue", "orange", "yellow", "pink"];
-
     function handleClick() {
         dispatch(startQuiz());
         let newState = {
@@ -26,18 +24,15 @@ const Lobby = () => {
         };
         socket.emit("send state to players", newState);
     }
-
     function copyCode(e) {
         const osCopy = navigator.clipboard;
         const copiedCode = document.getElementById('code-copy')
         const roomCode = data.room
         osCopy.writeText(copiedCode.innerText).then(() => copiedCode.innerHTML = 'Copied')
-
         setTimeout(() => {
             copiedCode.innerHTML = roomCode
         }, 1000)
     }
-
     return (
         <section className='container'>
             {data.users && (
@@ -105,11 +100,9 @@ const Lobby = () => {
                                             restDelta: 0.001
                                         }
                                     }}> <Chat socket={socket} username={user} room={data.room} />
-
                                 </motion.div>
                             </div>
                             <div className='col-4 d-flex flex-sm-column flex-row mt-4'>
-
                                 {data.users.map((user, index) => {
 
                                     let color = colors[Math.floor(Math.random() * colors.length)];
@@ -140,10 +133,8 @@ const Lobby = () => {
                                                 <h4 className="mx-auto my-auto p-1 text-light">{user.name}</h4>{" "}
                                             </motion.div>
                                         </div>)
-                                })
-                                }
+                                })}
                             </div>
-
                         </div>
                         {data.host === user ? (
                             <div className="row mt-5 mb-5">
@@ -215,11 +206,9 @@ const Lobby = () => {
                             </div>)}
                     </motion.div>
                 </div>
-
             )}
             {data.gameStarted && <Navigate to="/play" />}
         </section>
-
     )
 }
 

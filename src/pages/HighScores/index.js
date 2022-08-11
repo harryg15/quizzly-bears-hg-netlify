@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { motion } from 'framer-motion';
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './styles.css'
 import axios from "axios";
 
@@ -40,18 +38,15 @@ const HighScores = () => {
           }
         }}
       >
-
         <h1 className="mx-3 my-auto">{index + 1}</h1>
         <h1 className="mx-2 my-auto text-dark">{rank.username}</h1>
         <h1 className="mx-2 my-auto text-dark">{rank.score}</h1>
-
       </motion.div >
     )
   })
 
   return (
     <main className="d-flex flex-column justify-content-center">
-
       <motion.h1
         className='title card py-sm-2 px-sm-3 mb-4  bg-warning'
         initial={{ opacity: 0, scale: 0.5 }}
@@ -73,8 +68,6 @@ const HighScores = () => {
         }}
       >
         Highscores
-
-
       </motion.h1>
       <motion.div className="card d-flex flex-column pt-4 px-4 pb-1 shadow"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -94,10 +87,6 @@ const HighScores = () => {
           }
         }}
       >
-
-
-
-
         <motion.button onClick={sendToHome} className="btn mx-auto text-light leaderboard-home"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 0.8 }}
@@ -115,9 +104,7 @@ const HighScores = () => {
               restDelta: 0.001
             }
           }}>Home</motion.button>
-
         {renderHighScores}
-
       </motion.div >
     </main >
   );

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Navigate } from "react-router-dom";
 import he from "he";
 import { increaseQuestionNumber, increaseScore } from "../../actions";
-const targetTime = 20;
 
 export default function QuestionCard({ questionDetails, questionNumber }) {
   const [randomArray, setRandomArray] = useState([]);
@@ -16,15 +15,9 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
   const socket = useSelector((state) => state.socket);
   const player = useSelector((state) => state.player);
   const dispatch = useDispatch();
-  const { question, category, difficulty, correct_answer, incorrect_answers } =
-    questionDetails;
+  const { question, correct_answer, incorrect_answers } = questionDetails;
   const timerRef = useRef();
-
-  // Need counter, counter updates state which is reset when user goes to next question (or when timer runs out)
-  // Calculates score with time if answer is correct
-  // Dispatch to increase question number every 30 seconds ( only if Q# < 10 otherwise end game)
-
-  // collect and shuffle answer cards
+  const targetTime = 20;
   useEffect(() => {
     let questionArray = [];
     questionArray.push(he.decode(correct_answer), he.decode(incorrect_answers[0]), he.decode(incorrect_answers[1]), he.decode(incorrect_answers[2]));
@@ -41,15 +34,6 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
     const countDown = setInterval(()=>minusSecond(), 1000)
     return () => clearInterval(countDown)
   }, [question]);
-
-  // useEffect(() =>{
-  //   function minusSecond(){
-  //     setTimer(prevTime => prevTime - 1)
-  //   }
-  //   const countDown = setInterval(()=>minusSecond(), 1000)
-  //   return () => clearInterval(countDown)
-  // }, [question])
-
   useEffect(() => {
     if (timer == 0) {
       if (questionNumber <= 10) {
@@ -61,21 +45,15 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
     }
     resetTimer();
   }, [timer])
-
-  // submit players answer AND update score
   function submitAnswer(e) {
     const selected = e.target.textContent;
     setPlayerAnswer(selected);
     if (questionNumber <= 10) {
-      // move player to the next question
       dispatch(increaseQuestionNumber());
-      // reset countdown timer
       setTimer(targetTime);
     } else {
-      // At game end, sets game as finished in redux
       setFinishedQuiz(true);
     }
-
     if (selected === correct_answer && questionNumber <= 10) {
       let score = Math.floor(50 + (2.5 * timer));
       dispatch(increaseScore(player, score));
@@ -86,7 +64,6 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
       });
     }
   }
-
   const container = {
     hidden: { opacity: 0, scale: 0.5 },
     show: {
@@ -99,11 +76,9 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
     },
     exit: {opacity: 0, scale: 0.5}
   }
-
   const resetTimer = () => {
     timerRef.current.style.width = `${timer * 10 / 2}%`;
   }
-  
   return (
     <motion.div
     variants={container}
@@ -148,7 +123,6 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
       </motion.div>
       <Container>
         <Row className="seperator">
-
           <motion.div onClick={submitAnswer} className="answercard col"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -211,7 +185,6 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
           >
            {randomArray[2]}
            </motion.div>
-
            <motion.div onClick={submitAnswer} className="answercard col"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -238,40 +211,3 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
       </motion.div>
   );
 }
-
-// <motion.div
-// initial={{ opacity: 0, scale: 0.5 }}
-// animate={{ opacity: 1, scale: 1 }}
-// whileHover={{ scale: 1.05 }}
-// transition={{
-//     default: {
-//         duration: 0.3,
-//         ease: [0, 0.71, 0.2, 1.01],
-//     },
-//     scale: {
-//         type: "spring",
-//         damping: 10,
-//         stiffness: 400,
-//         restDelta: 0.001
-//     }
-// }}
-
-
-        // <div class="questioncard row">
-        //   <div class="col">Question: What is the stage name of English female rapper Mathangi Arulpragasam, who is known for the song "Paper Planes"?
-        //   </div>
-        // </div>
-        // <div class="container">
-        //   <div class="seperator row">
-        //     <div class="answercard col">K.I.A.
-        //     </div>
-        //     <div class="answercard col">M.I.A.
-        //     </div>
-        //   </div>
-        //   <div class="seperator row">
-        //     <div class="answercard col">C.I.A.
-        //     </div>
-        //     <div class="answercard col">A.I.A.
-        //     </div>
-        //   </div>
-        // </div>

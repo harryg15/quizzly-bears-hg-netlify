@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { QuestionCard } from "../../components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Row } from 'react-bootstrap';
@@ -38,12 +38,12 @@ const Game = () => {
   const quizState = useSelector((state) => state.quizState);
   const player = useSelector((state) => state.player);
   const socket = useSelector((state) => state.socket);
-console.log(allUsers);
+
   const players = allUsers.map((player) => (
     <div
       className="card m-2 text-center"
       style={{ width: "120px" }}
-      key={Math.random()}
+      key={player.name}
     >
       <div className="card-body">
         <h5 className="card-title">{player.name}</h5>

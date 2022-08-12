@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Navigate } from "react-router-dom";
 import he from "he";
 import { increaseQuestionNumber, increaseScore } from "../../actions";
-
+const targetTime = 20;
 export default function QuestionCard({ questionDetails, questionNumber }) {
   const [randomArray, setRandomArray] = useState([]);
   const [timer, setTimer] = useState(targetTime);
@@ -17,7 +17,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
   const dispatch = useDispatch();
   const { question, correct_answer, incorrect_answers } = questionDetails;
   const timerRef = useRef();
-  const targetTime = 20;
+
   useEffect(() => {
     let questionArray = [];
     questionArray.push(he.decode(correct_answer), he.decode(incorrect_answers[0]), he.decode(incorrect_answers[1]), he.decode(incorrect_answers[2]));

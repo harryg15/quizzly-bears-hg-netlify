@@ -10,7 +10,6 @@ const Results = () => {
   const player = useSelector((state) => state.player);
   const state = useSelector((state) => state);
   const users = useSelector((state) => state.quizState.users);
-  const navigate = useNavigate();
   const sortedUsers = users.sort((a, b) => b.score - a.score);
   const playerScoreIndex = quizState.users.findIndex((i) => i.name === player);
   let scoreToSubmit = quizState.users[playerScoreIndex].score;

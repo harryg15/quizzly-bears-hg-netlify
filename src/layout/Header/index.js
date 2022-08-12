@@ -39,6 +39,7 @@ function sendToHome() {
               duration: 0.3,
               ease: [0, 0.71, 0.2, 1.01],
             },
+            delay: 5,
             scale: {
               type: "spring",
               damping: 10,

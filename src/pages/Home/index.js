@@ -169,6 +169,8 @@ const Home = () => {
                         required
                         label="Game ID"
                         onChange={handleLobbyCode}
+                        minlength="9"
+                        maxlength="9"
                         value={lobbyCode}
                         placeholder="Room ID"
                         className="input-group-text border border-primary m-1 w-100"

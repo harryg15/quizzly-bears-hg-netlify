@@ -35,7 +35,7 @@ export default function CreateGame() {
     const socket = useSelector((state) => state.socket);
     function lobbyCodeGenerator() {
         let result = "";
-        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let characters = 'abcdefghijklmnopqrstuvwxyz123456789';
         let charactersLength = 9;
         for (let i = 0; i < charactersLength; i++) {
             result += characters.charAt(Math.floor(Math.random() * characters.length));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { startQuiz } from "../../actions";
 import { Chat } from "../../components";
 import { motion } from 'framer-motion'
@@ -14,8 +14,6 @@ const Lobby = () => {
     const data = useSelector((state) => state.quizState);
     const user = useSelector((state) => state.player);
     const socket = useSelector((state) => state.socket);
-    const state = useSelector((state) => state);
-    console.log(state)
     const dispatch = useDispatch();
     const colors = ["lightred", "lightgreen", "lightblue", "orange", "yellow", "pink"];
     function handleClick() {

@@ -61,7 +61,7 @@ body {
   }
   .questioncard {
     max-width: 700px;
-    padding-top: 10px;
+    padding-top: calc(1vw + 1vh + 1vmin);
     padding-bottom: calc(1vw + 1vh + 1vmin);
     margin: auto;
     margin-top: 10px;

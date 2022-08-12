@@ -62,7 +62,7 @@ const Home = () => {
   }
   return (
     <section className="container pb-3 d-flex flex-column">
-      <div className="parent" style={{ height: 250 }}>
+      <div className="parent" style={{ height: 'calc(7vw + 7vh + 4vmin)' }}>
         <div className="child">
           <motion.h1
             className="title"

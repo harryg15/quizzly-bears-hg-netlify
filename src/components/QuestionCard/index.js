@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import he from "he";
 import { increaseQuestionNumber, increaseScore } from "../../actions";
 const targetTime = 20;
+
 export default function QuestionCard({ questionDetails, questionNumber }) {
   const [randomArray, setRandomArray] = useState([]);
   const [timer, setTimer] = useState(targetTime);
@@ -45,6 +46,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
     }
     resetTimer();
   }, [timer])
+
   function submitAnswer(e) {
     const selected = e.target.textContent;
     setPlayerAnswer(selected);
@@ -87,7 +89,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
     exit="exit"
     >
       <section className="container col-12 d-flex justify-content-center">
-        <section className="progress-bar-container col-8 py-4">
+        <section className="progress-bar-container col-8 py-md-4">
           <div className="progress-bar bg-danger rounded">
             <div className="time-left progress-bar progress-bar-striped progress-bar-animated bg-warning rounded" ref={timerRef}>
               {timer}
@@ -118,6 +120,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
         <motion.div className="col"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
+                  style={{ fontSize: 'calc(1vw + 1vh + 1vmin)'}}
                   exit={{ opacity: 0, scale: 0.5}}
                   >Question: {he.decode(question)}</motion.div>
       </motion.div>
@@ -128,6 +131,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{opacity: 0, scale: 0.5}}
                   whileHover={{ scale: 1.05 }}
+                  style={{ fontSize: 'calc(1vw + 1vh + 1vmin)'}}
                   transition={{
                     default: {
                       duration: 0.3,
@@ -148,6 +152,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{opacity: 0, scale: 0.5}}
                   whileHover={{ scale: 1.05 }}
+                  style={{ fontSize: 'calc(1vw + 1vh + 1vmin)'}}
                   transition={{
                     default: {
                       duration: 0.3,
@@ -170,6 +175,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{opacity: 0, scale: 0.5}}
                   whileHover={{ scale: 1.05 }}
+                  style={{ fontSize: 'calc(1vw + 1vh + 1vmin)'}}
                   transition={{
                     default: {
                       duration: 0.3,
@@ -190,6 +196,7 @@ export default function QuestionCard({ questionDetails, questionNumber }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{opacity: 0, scale: 0.5}}
                   whileHover={{ scale: 1.05 }}
+                  style={{ fontSize: 'calc(1vw + 1vh + 1vmin)'}}
                   transition={{
                     default: {
                       duration: 0.3,

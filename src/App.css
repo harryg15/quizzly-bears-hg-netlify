@@ -32,7 +32,7 @@ body {
 .title {
     font-family: 'GT Walsheim Pro';
     color: white;
-    font-size: 100px;
+    font-size: calc(4vw + 4vh + 2vmin);
     text-align: center;
     margin-top: 7%;
     overflow-x: hidden;
@@ -61,8 +61,8 @@ body {
   }
   .questioncard {
     max-width: 700px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: calc(1vw + 1vh + 1vmin);
     margin: auto;
     margin-top: 10px;
     backdrop-filter: blur(16px) saturate(180%);
@@ -75,12 +75,12 @@ body {
     color: white;
     font-size: 30px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: calc(1vw + 1vh + 1vmin);
   }
   .answercard {
     max-width: 300px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: calc(1vw + 1vh + 1vmin);
+    padding-bottom: calc(1vw + 1vh + 1vmin);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.2);
@@ -92,7 +92,7 @@ body {
     font-size: 30px;
     text-align: center;
     align-self: center;
-    margin: 20px 50px;
+    margin: calc(1vw + 1vmin) 50px;
     cursor: pointer;
   }
 
@@ -136,7 +136,7 @@ body {
   .mb-2 {
     margin-bottom: 40px !important;
   }
-  
+
   .flex-row {
     padding-left: 10%;
     padding-right: 10%;

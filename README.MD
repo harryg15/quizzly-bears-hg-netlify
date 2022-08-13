@@ -5,11 +5,11 @@ This repo contains the client for a fullstack project built with reactjs, redux,
 
 ## Installation & Usage
 ### Installation
-- cd into quizly-bears-client
+- cd into quizzly-bears-client
 - run: `npm i`
 
 ### Usage
-- cd into quizly-bears-client
+- cd into quizzly-bears-client
 - run `npm run dev`
 
 ## Changelog

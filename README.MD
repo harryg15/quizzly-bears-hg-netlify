@@ -1,6 +1,7 @@
 # QuizzlyBears
 ## LAP 3 Project Assignment
 This repo contains the client for a fullstack project built with reactjs, redux, socket.io, nodejs, expressjs and pgSQL.
+
 Live site: https://quizzlybears.netlify.app/
 
 ## Installation & Usage
